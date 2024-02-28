@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redirecting...</title>
+    <style>
+      body {
+        text-align: center;
+      }
+    </style>
+    <script>
+      document.AddEventListener("DOMContentLoaded", function() {
+        const searchParams = new URLSearchParams();
+        if (searchParams.has("url") && searchParams.get("url") != null) {
+          setTimeout(function() {
+            const target = searchParams.get("url");
+            location.href = target.toString();
+          }, 200);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <h1>
+      REDIRECTING...
+    </h1>
+  </body>
+</html>
