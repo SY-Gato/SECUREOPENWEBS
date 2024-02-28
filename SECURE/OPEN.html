@@ -16,9 +16,11 @@
             const target = searchParams.get("url").toString();
             let a = document.createElement("a");
             a.href = target;
-            a.target = "_self";
+            a.target = "_blank";
             a.click();
+            window.close();
             //window.location.href = target.toString();
+            //window.location = target;
           }, 500);
         } else {
           let el = document.getElementById("thingy");
