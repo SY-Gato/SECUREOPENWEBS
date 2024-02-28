@@ -9,7 +9,8 @@
     </style>
     <script>
       document.AddEventListener("DOMContentLoaded", function() {
-        const searchParams = new URLSearchParams();
+        const searchParams = new URLSearchParams(location.href);
+        alert(searchParams.entries());
         if (searchParams.has("url") && searchParams.get("url") != null) {
           setTimeout(function() {
             const target = searchParams.get("url");
