@@ -13,9 +13,17 @@
         //alert(searchParams.entries());
         if (searchParams.has("url") && searchParams.get("url") != null) {
           setTimeout(function() {
-            const target = searchParams.get("url");
-            location.href = target.toString();
-          }, 200);
+            const target = searchParams.get("url").toString();
+            let a = document.createElement("a");
+            a.href = target;
+            a.target = "_self";
+            a.click();
+            //window.location.href = target.toString();
+          }, 500);
+        } else {
+          let el = document.getElementById("thingy");
+          el.style.color = "red";
+          el.innerHTML = "ERROR! 'url' Parameter not found!";
         }
         /*alert("hi");
         const targ = new URLSearchParams(location.search).get("url");
@@ -25,7 +33,7 @@
     </script>
   </head>
   <body>
-    <h1>
+    <h1 id="thingy">
       REDIRECTING...
     </h1>
   </body>
