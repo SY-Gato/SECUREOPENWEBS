@@ -13,14 +13,23 @@
         //alert(searchParams.entries());
         if (searchParams.has("url") && searchParams.get("url") != null) {
           setTimeout(function() {
-            const target = searchParams.get("url").toString();
-            let a = document.createElement("a");
+            let spec = searchParams.get("url").toString();
+            let target;
+            let start = "https://";
+            if (!spec.startsWith("https://") && !spec.startsWith("http://")) {
+              target = start.concat(spec);
+            } else {
+              target = spec;
+            }
+            window.location = target;
+            /*let a = document.createElement("a");
             a.href = target;
             a.target = "_blank";
             a.click();
-            window.close();
+            window.close();*/
             //window.location.href = target.toString();
             //window.location = target;
+            
           }, 500);
         } else {
           let el = document.getElementById("thingy");
