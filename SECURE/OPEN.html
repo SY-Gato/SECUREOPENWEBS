@@ -17,7 +17,8 @@
             location.href = target.toString();
           }, 200);
         }*/
-        const targ = new URLSearchParams(location.search).get("url") || "";
+        const targ = new URLSearchParams(location.search).get("url");
+        alert(targ);
         location.href = targ;
       });
     </script>
