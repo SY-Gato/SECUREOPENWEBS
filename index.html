@@ -21,7 +21,7 @@
       }
 	    function encode() {
 				let el = document.getElementById("targ");
-				if check(el.value) {
+				if (el.value != "") {
 					let out = document.getElementById("output");
 					out.textContent = "Output: https://sy-gato.github.io/SECUREOPENWEBS/SECURE/OPEN?url="+encodeURIComponent(btoa(el.value));
 				}
