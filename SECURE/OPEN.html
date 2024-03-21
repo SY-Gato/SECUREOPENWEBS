@@ -13,7 +13,7 @@
         //alert(searchParams.entries());
         if (searchParams.has("url") && searchParams.get("url") != null) {
           setTimeout(function() {
-            let spec = searchParams.get("url").toString();
+            let spec = atob(searchParams.get("url")).toString();
             let target;
             let start = "https://";
             if (!spec.startsWith("https://") && !spec.startsWith("http://")) {
