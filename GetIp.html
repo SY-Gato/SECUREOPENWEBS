@@ -7,7 +7,7 @@
     <button onclick="doit()">Get IP</button>
     <p id="v"></p>
     <script>
-      function doit() {
+      /*function doit() {
         alert("clicked!");
         let element = document.getElementById("v");
         fetch(document.location, { method: 'HEAD' })
@@ -17,16 +17,37 @@
             } else {
               throw new Error('Network response was not ok.');
             }
-        }
-        .then(headers => { {
+          }
+          .then(headers => { {
             alert(headers);
-          element.textContent = headers.toString();
-        }
+            element.textContent = headers.toString();
+          }
+          .catch(error => {
+              alert('Error fetching headers:', error);
+          })));
+       alert("done!");
+        }*/
+  function doit() {
+    alert("clicked!");
+    let element = document.getElementById("v");
+    fetch(document.location, { method: 'HEAD' })
+        .then(response => {
+            if (response.ok) {
+                return response.headers;
+            } else {
+                throw new Error('Network response was not ok.');
+            }
+        })
+        .then(headers => {
+            alert(headers);
+            element.textContent = headers.toString();
+        })
         .catch(error => {
-            alert('Error fetching headers:', error);
-        })));
-      alert("done!");
-      }
+            alert('Error fetching headers: ' + error); // Concatenate error message properly
+        });
+    alert("done!");
+}
+
     </script>
   </body>
 </html>
