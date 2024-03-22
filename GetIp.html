@@ -4,7 +4,7 @@
     <title>Yes</title>
   </head>
   <body>
-    <button onclick="doit()">Get IP</button>
+    <button onclick="doit()">Get Headers</button>
     <p id="v"></p>
     <script>
       /*function doit() {
@@ -27,7 +27,8 @@
           })));
        alert("done!");
         }*/
-  function doit() {
+      
+  /*function doit() {
     alert("clicked!");
     let element = document.getElementById("v");
     fetch(document.location, { method: 'HEAD' })
@@ -46,7 +47,32 @@
             alert('Error fetching headers: ' + error); // Concatenate error message properly
         });
     alert("done!");
+}*/
+function doit() {
+    alert("clicked!");
+    let element = document.getElementById("v");
+    fetch(document.location, { method: 'HEAD' })
+        .then(response => {
+            if (response.ok) {
+                return response.headers;
+            } else {
+                throw new Error('Network response was not ok.');
+            }
+        })
+        .then(headers => {
+            let headersString = '';
+            for (let pair of headers.entries()) {
+                headersString += pair[0] + ': ' + pair[1] + '\n';
+            }
+            alert(headersString);
+            element.textContent = headersString;
+        })
+        .catch(error => {
+            alert('Error fetching headers: ' + error);
+        });
+    alert("done!");
 }
+
 
     </script>
   </body>
