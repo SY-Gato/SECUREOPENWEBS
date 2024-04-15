@@ -41,9 +41,13 @@
           }, 500);
           setTimeout(function() {
             let item = document.createElement("button");
-            item.href = target;
-            item.target = "_self";
+            //item.href = target;
+            //item.target = "_self";
             item.innerHTML = "Not redirecting? Click here.";
+
+            item.addEventListener("click", function() {
+              window.location.href = target;
+            });
             document.body.appendChild(item);
           }, 500);
         } else {
