@@ -12,15 +12,23 @@
         const searchParams = new URLSearchParams(location.search);
         //alert(searchParams.entries());
         if (searchParams.has("url") && searchParams.get("url") != null) {
+          let spec = atob(searchParams.get("url")).toString();
+          let target;
+          let start = "https://";
+          if (!spec.startsWith("https://") && !spec.startsWith("http://")) {
+            target = start.concat(spec);
+          } else {
+            target = spec;
+          }
           setTimeout(function() {
-            let spec = atob(searchParams.get("url")).toString();
+            /*let spec = atob(searchParams.get("url")).toString();
             let target;
             let start = "https://";
             if (!spec.startsWith("https://") && !spec.startsWith("http://")) {
               target = start.concat(spec);
             } else {
               target = spec;
-            }
+            }*/
             window.location = target;
             /*let a = document.createElement("a");
             a.href = target;
@@ -30,6 +38,13 @@
             //window.location.href = target.toString();
             //window.location = target;
             
+          }, 500);
+          setTimeout(function() {
+            let item = document.createElement("button");
+            item.href = target;
+            item.target = "_self";
+            item.innerHTML = "Not redirecting? Click here.";
+            document.body.appendChild(item);
           }, 500);
         } else {
           let el = document.getElementById("thingy");
